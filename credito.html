@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Crédito Happy Eart</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/home.css" rel="stylesheet" type="text/css" />
+    <link href="css/forms.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/credito.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body onload="recuperarLocal()">
+    <div id="container">
+        <header id="header">
+            <nav class="menu">
+                <ul>
+                    <li class="btn_1"><a href="index.html">Home</a></li>
+                    <li class="btn_2"><a href="#">Tiempo</a></li>
+                    <li class="btn_3"><a href="credito.html">Crédito</a></li>
+                    <li class="btn_4"><a href="#">Servicios</a></li>
+                    <li class="btn_5"><a href="contact.html">Contáctenos</a></li>                </ul>
+            </nav>
+            <img src="img/logo.jpg" alt="" name="logo" width="251" height="45" id="logo" />
+        </header>
+
+        <div id="main">
+            <form class="contact_form" id="contact_form">
+                <div>
+                    <ul>
+                        <li>
+                            <h2>Crédito Happy Earth</h2>
+                            <span class="required_notification">* Datos requeridos</span>
+                        </li>
+                        <li>
+                            <label for="name">Nombre:</label>
+                            <input type="text" name="nombre" placeholder="Elsi Garro Mata" />
+                        </li>
+                        <li>
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" placeholder="egarrom@utn.com" required=required />
+                            <span class="form_hint">Formato correcto: "name@something.com"</span>
+                        </li>
+                        <li>
+                            <label for="fnace">Fecha de Nacimiento:</label>
+                            <input type="date" name="fnace" placeholder="17/8/1985" required=required />
+                            <span class="form_hint">Formato correcto: "dd/mm/yyyy"</span>
+                        </li>
+                        <li>
+                            <label for="salneto">Salario Neto:</label>
+                            <input type="text" name="salneto" placeholder="850789.90" required=required />
+                            <span class="form_hint">Formato correcto: "#####.##"</span>
+                        </li>
+                        <li>
+                            <label for="txtVivienda">Valor de la Vivienda:</label>
+                            <input type="text" name="txtVivienda" placeholder="850789.90" required=required />
+                            <span class="form_hint">Formato correcto: "#####.##"</span>
+                        </li>
+                        <li>
+                            <label for="txtMonto">Monto a Solicitar:</label>
+                            <input type="text" name="txtMonto" placeholder="850789.90" required=required />
+                            <span class="form_hint">Formato correcto: "#####.##"</span>
+                        </li>
+                        <li>
+                            <label for="txtPlazo">Plazo en Años:</label>
+                            <input type="number" name="txtPlazo" min="5" max="30" required=required />
+                        </li>
+                        <li>
+                            <label for="txtTasa">Tasa Interés:</label>
+                            <input type="text" name="txtTasa" placeholder="19.90" required=required />
+                            <span class="form_hint">Formato correcto: "###.##"</span>
+                        </li>
+                        <li>
+                            <label for="txtPM">Pago Mensual:</label>
+                            <input type="text" name="txtPM"  />
+                        </li>
+                        <li>
+                            <label for="txtINR">Ingreso neto Requerido:</label>
+                            <input type="text" name="txtINR" />
+                        </li>
+                        <li>
+                            <label for="txtPF">Porcentaje a Financiar:</label>
+                            <input type="text" name="txtPF" />
+                        </li>
+                        
+                        <li>
+                            <button type="button" class="submit" onclick="procesarCalculo()">Calcular Pago Mensual</button>
+                        </li>
+                        <li>
+                            <button type="button" class="submit" onclick="proyeccion()">Mostrar Proyección</button>
+                        </li>
+
+                        <li>
+                            <p id="lblValSalario"></p>
+                        </li>
+                        <li>
+                            <p id="lblValEdad"></p>
+                        </li> 
+
+                    </ul>
+                </div>
+            </form>
+            
+            <div id="tblData">
+            </div>
+            <!--
+                <table><tr><td>Periodo</td><td>Pago Mensual</td><td>Interes</td><td>Amortiza</td><td>Saldo</td></tr><tr><td>1</td><td>4155496.9406972937</td><td>284000</td><td>3871496.9406972937</td><td>44128503.0593027</td></tr><tr><td>2</td><td>4155496.9406972937</td><td>261093.64310087432</td><td>3894403.297596419</td><td>40234099.761706285</td></tr><tr><td>3</td><td>4155496.9406972937</td><td>238051.75692342885</td><td>3917445.183773865</td><td>36316654.57793242</td></tr><tr><td>4</td><td>4155496.9406972937</td><td>214873.53958610012</td><td>3940623.4011111935</td><td>32376031.176821224</td></tr><tr><td>5</td><td>4155496.9406972937</td><td>191558.18446285892</td><td>3963938.756234435</td><td>28412092.42058679</td></tr><tr><td>6</td><td>4155496.9406972937</td><td>168104.8801551385</td><td>3987392.060542155</td><td>24424700.360044636</td></tr><tr><td>7</td><td>4155496.9406972937</td><td>144512.81046359742</td><td>4010984.130233696</td><td>20413716.22981094</td></tr><tr><td>8</td><td>4155496.9406972937</td><td>120781.15435971471</td><td>4034715.786337579</td><td>16379000.44347336</td></tr><tr><td>9</td><td>4155496.9406972937</td><td>96909.08595721738</td><td>4058587.854740076</td><td>12320412.588733284</td></tr><tr><td>10</td><td>4155496.9406972937</td><td>72895.7744833386</td><td>4082601.1662139553</td><td>8237811.422519328</td></tr><tr><td>11</td><td>4155496.9406972937</td><td>48740.38424990602</td><td>4106756.5564473877</td><td>4131054.8660719404</td></tr><tr><td>12</td><td>4155496.9406972937</td><td>24442.07462425898</td><td>4131054.8660730347</td><td>-0.0000010943040251731873</td></tr></table>    
+            -->
+
+        </div>
+
+        <footer id="footer">
+            <p>
+                <a href="index.html">Home</a> | <a href="#">Tiempo</a> | <a href="credito.html">Crédito</a> | <a href="#">Servicios</a> | <a href="contact.html">Contáctenos</a><br />
+                Copyright &copy; Real State Happy Eart
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
